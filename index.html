@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rating Estrelas do Bimestre</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Rating Estrelas do Bimestre</h1>
+        <div id="rating-menu">
+            <button onclick="showCategory('melhores-notas')">Prêmio Albert Einstein - Melhores notas</button>
+            <button onclick="showCategory('mais-criativo')">Prêmio Steve Jobs - Mais Criativo</button>
+            <button onclick="showCategory('comportados')">Comportados - Aluno mais quieto</button>
+            <button onclick="showCategory('dedicado')">Prêmio "No pain, no gain" - Mais dedicado</button>
+        </div>
+    </header>
+
+    <main>
+        <div id="ranking-container">
+            <h2 id="category-title">Escolha uma categoria</h2>
+            <table id="ranking-table">
+                <thead>
+                    <tr>
+                        <th>Posição</th>
+                        <th>Aluno</th>
+                        <th>Pontos</th>
+                    </tr>
+                </thead>
+                <tbody id="ranking-body">
+                    <!-- Dados via JS -->
+                </tbody>
+            </table>
+        </div>
+
+        <div id="student-profile">
+            <h2>Histórico de Apontamentos</h2>
+            <div id="profile-info"></div>
+        </div>
+    </main>
+
+    <footer>
+        <div id="animation">
+            <div class="star" style="animation: falling 2s infinite;"></div>
+            <div class="star" style="animation: falling 3s infinite;"></div>
+            <div class="star" style="animation: falling 4s infinite;"></div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
