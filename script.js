@@ -1,44 +1,53 @@
+// Dados simulados dos alunos e suas pontuações nas categorias
 const alunos = [
-  { nome: "Elias", einstein: 0, jobs: 0, quietos: 0, dedicados: 0, historico: [] },
-  { nome: "Thais", einstein: 0, jobs: 0, quietos: 0, dedicados: 0, historico: [] },
-  { nome: "Gustavo", einstein: 0, jobs: 0, quietos: 0, dedicados: 0, historico: [] },
-  { nome: "Ana Sophia", einstein: 0, jobs: 0, quietos: 0, dedicados: 0, historico: [] },
-  // Adicione os outros alunos aqui
+    { nome: "Elias", pontosEinstein: 80, pontosJobs: 60, pontosComportados: 70, pontosNoPain: 90 },
+    { nome: "Thais", pontosEinstein: 90, pontosJobs: 85, pontosComportados: 60, pontosNoPain: 75 },
+    { nome: "Gustavo", pontosEinstein: 70, pontosJobs: 80, pontosComportados: 85, pontosNoPain: 60 },
+    { nome: "Mateus", pontosEinstein: 60, pontosJobs: 50, pontosComportados: 80, pontosNoPain: 85 },
+    { nome: "Isabelle", pontosEinstein: 85, pontosJobs: 90, pontosComportados: 75, pontosNoPain: 80 },
 ];
 
-function mostrarCategoria(categoria) {
-  document.querySelectorAll(".categoria").forEach(cat => {
-    cat.classList.remove("ativo");
-  });
-  document.getElementById(categoria).classList.add("ativo");
-}
+// Função para atualizar a lista de alunos em cada categoria
+function atualizarListaCategoria(categoria) {
+    const listaAlunos = document.querySelector(`#categoria-${categoria} .lista-alunos`);
+    listaAlunos.innerHTML = ''; // Limpar a lista antes de adicionar novos itens
 
-function renderAlunos() {
-  const categorias = ["einstein", "jobs", "quietos", "dedicados"];
+    // Filtra os alunos pela categoria e cria elementos para a lista
+    alunos.forEach(aluno => {
+        let pontosCategoria = aluno[`pontos${categoria}`];  // Utiliza a categoria dinamicamente
+        let alunoDiv = document.createElement("div");
+        alunoDiv.classList.add("aluno");
 
-  categorias.forEach(cat => {
-    const container = document.getElementById("lista-" + cat);
-    container.innerHTML = "";
+        alunoDiv.innerHTML = `
+            <h3>${aluno.nome}</h3>
+            <p>Pontos: ${pontosCategoria}</p>
+        `;
 
-    const ordenados = [...alunos].sort((a, b) => b[cat] - a[cat] || a.nome.localeCompare(b.nome));
-
-    ordenados.forEach((aluno, index) => {
-      const div = document.createElement("div");
-      div.className = "aluno";
-      div.onclick = () => {
-        const hist = div.querySelector(".historico");
-        hist.style.display = hist.style.display === "block" ? "none" : "block";
-      };
-
-      div.innerHTML = `
-        <h3>${index + 1}º - ${aluno.nome} | ${aluno[cat]} pts</h3>
-        <div class="historico">
-          ${aluno.historico.length ? aluno.historico.map(h => `<p>${h}</p>`).join('') : "Sem histórico."}
-        </div>
-      `;
-      container.appendChild(div);
+        listaAlunos.appendChild(alunoDiv);
     });
-  });
 }
 
-document.addEventListener("DOMContentLoaded", renderAlunos);
+// Função para alternar a visibilidade das categorias
+function alternarCategoria(categoria) {
+    // Esconde todas as categorias
+    const categorias = document.querySelectorAll('.categoria');
+    categorias.forEach(c => c.classList.remove('ativo'));
+
+    // Mostra a categoria clicada
+    const categoriaDiv = document.getElementById(`categoria-${categoria}`);
+    categoriaDiv.classList.add('ativo');
+
+    // Atualiza a lista de alunos dessa categoria
+    atualizarListaCategoria(categoria);
+}
+
+// Inicializa o site
+document.getElementById("prêmio-einstein").addEventListener("click", () => alternarCategoria('Einstein'));
+document.getElementById("prêmio-jobs").addEventListener("click", () => alternarCategoria('Jobs'));
+document.getElementById("comportados").addEventListener("click", () => alternarCategoria('Comportados'));
+document.getElementById("no-pain").addEventListener("click", () => alternarCategoria('NoPain'));
+
+// Ao carregar a página, mostra a primeira categoria
+document.addEventListener("DOMContentLoaded", () => {
+    alternarCategoria('Einstein');  // Mostra a primeira categoria ao carregar
+});
