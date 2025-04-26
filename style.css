@@ -1,96 +1,97 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
 body {
-    font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(to bottom, #e6f7ff, #ffffff);
-    margin: 0;
-    padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #111;
+  color: #f4f4f4;
+  padding: 1rem;
 }
 
 header {
-    background-color: #007acc;
-    color: white;
-    padding: 20px;
-    text-align: center;
+  text-align: center;
+  padding: 1rem;
+  background: #222;
+  color: #f06;
+  box-shadow: 0 0 10px #f06;
 }
 
-h1 {
-    margin: 0;
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1rem 0;
 }
 
-#rating-menu {
-    margin-top: 10px;
+nav button {
+  padding: 0.5rem 1rem;
+  border: none;
+  background-color: #f06;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 0 5px #f06;
+  transition: 0.3s;
 }
 
-#rating-menu button {
-    background-color: #ff8800;
-    color: white;
-    margin: 5px;
-    padding: 10px 15px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
+nav button:hover {
+  background-color: #c0055d;
 }
 
-#rating-menu button:hover {
-    background-color: #ffaa33;
+.categoria {
+  display: none;
+  margin-top: 1rem;
 }
 
-main {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    padding: 20px;
+.categoria.ativo {
+  display: block;
 }
 
-#ranking-container, #student-profile {
-    background: white;
-    padding: 20px;
-    margin: 10px;
-    border-radius: 10px;
-    width: 45%;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+.lista-alunos {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-top: 1rem;
 }
 
-#ranking-table {
-    width: 100%;
-    border-collapse: collapse;
+.aluno {
+  background: #1e1e1e;
+  border-left: 4px solid #f06;
+  padding: 0.8rem;
+  border-radius: 5px;
+  box-shadow: 0 0 10px #f06a;
+  cursor: pointer;
 }
 
-#ranking-table th, #ranking-table td {
-    border: 1px solid #ccc;
-    padding: 8px;
-    text-align: center;
+.aluno h3 {
+  margin-bottom: 0.3rem;
 }
 
-#ranking-table th {
-    background-color: #007acc;
-    color: white;
+.aluno .historico {
+  display: none;
+  margin-top: 0.5rem;
+  color: #ccc;
+  font-size: 0.9rem;
 }
 
 footer {
-    position: relative;
-    height: 100px;
-    overflow: hidden;
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #666;
 }
 
-.star {
-    width: 10px;
-    height: 10px;
-    background: yellow;
-    border-radius: 50%;
-    position: absolute;
-    top: 0;
-    left: 50%;
-    opacity: 0.8;
-}
+@media (max-width: 600px) {
+  nav {
+    flex-direction: column;
+  }
 
-@keyframes falling {
-    0% {
-        transform: translateY(-10px);
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(100px);
-        opacity: 0;
-    }
+  .aluno {
+    font-size: 0.9rem;
+  }
 }
