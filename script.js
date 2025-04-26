@@ -1,53 +1,60 @@
-// Dados simulados dos alunos e suas pontuações nas categorias
 const alunos = [
-    { nome: "Elias", pontosEinstein: 80, pontosJobs: 60, pontosComportados: 70, pontosNoPain: 90 },
-    { nome: "Thais", pontosEinstein: 90, pontosJobs: 85, pontosComportados: 60, pontosNoPain: 75 },
-    { nome: "Gustavo", pontosEinstein: 70, pontosJobs: 80, pontosComportados: 85, pontosNoPain: 60 },
-    { nome: "Mateus", pontosEinstein: 60, pontosJobs: 50, pontosComportados: 80, pontosNoPain: 85 },
-    { nome: "Isabelle", pontosEinstein: 85, pontosJobs: 90, pontosComportados: 75, pontosNoPain: 80 },
+  "Aimê", "Alice", "Allana", "Ana Clara", "Ana Sophia", "André", "Ashira",
+  "Cesar", "Elias", "Emanuelly", "Felipe", "Gabriel", "Gustavo", "Hiel",
+  "Isabelly", "Júlio", "Luiz", "Lyvia", "Maria Alice", "Mateus", "Marya Luiza",
+  "Rebeca", "Samuel", "Sury", "Thais", "Ycaro"
 ];
 
-// Função para atualizar a lista de alunos em cada categoria
-function atualizarListaCategoria(categoria) {
-    const listaAlunos = document.querySelector(`#categoria-${categoria} .lista-alunos`);
-    listaAlunos.innerHTML = ''; // Limpar a lista antes de adicionar novos itens
+// Inicialização dos dados: todos zerados
+const categorias = {
+  albert: alunos.map(nome => ({ nome, pontos: 0 })),
+  steve: alunos.map(nome => ({ nome, pontos: 0 })),
+  comportados: alunos.map(nome => ({ nome, pontos: 0 })),
+  dedicados: alunos.map(nome => ({ nome, pontos: 0 }))
+};
 
-    // Filtra os alunos pela categoria e cria elementos para a lista
-    alunos.forEach(aluno => {
-        let pontosCategoria = aluno[`pontos${categoria}`];  // Utiliza a categoria dinamicamente
-        let alunoDiv = document.createElement("div");
-        alunoDiv.classList.add("aluno");
-
-        alunoDiv.innerHTML = `
-            <h3>${aluno.nome}</h3>
-            <p>Pontos: ${pontosCategoria}</p>
-        `;
-
-        listaAlunos.appendChild(alunoDiv);
-    });
-}
-
-// Função para alternar a visibilidade das categorias
-function alternarCategoria(categoria) {
-    // Esconde todas as categorias
-    const categorias = document.querySelectorAll('.categoria');
-    categorias.forEach(c => c.classList.remove('ativo'));
-
-    // Mostra a categoria clicada
-    const categoriaDiv = document.getElementById(`categoria-${categoria}`);
-    categoriaDiv.classList.add('ativo');
-
-    // Atualiza a lista de alunos dessa categoria
-    atualizarListaCategoria(categoria);
-}
-
-// Inicializa o site
-document.getElementById("prêmio-einstein").addEventListener("click", () => alternarCategoria('Einstein'));
-document.getElementById("prêmio-jobs").addEventListener("click", () => alternarCategoria('Jobs'));
-document.getElementById("comportados").addEventListener("click", () => alternarCategoria('Comportados'));
-document.getElementById("no-pain").addEventListener("click", () => alternarCategoria('NoPain'));
-
-// Ao carregar a página, mostra a primeira categoria
-document.addEventListener("DOMContentLoaded", () => {
-    alternarCategoria('Einstein');  // Mostra a primeira categoria ao carregar
+const historicoAlunos = {};
+alunos.forEach(nome => {
+  historicoAlunos[nome] = [];
 });
+
+// Função para renderizar cada categoria
+function renderizarCategoria(id, dados) {
+  const container = document.querySelector(`#${id} .lista-alunos`);
+  container.innerHTML = "";
+  const ordenado = [...dados].sort((a, b) =>
+    b.pontos !== a.pontos ? b.pontos - a.pontos : a.nome.localeCompare(b.nome)
+  );
+
+  ordenado.forEach((aluno, i) => {
+    const li = document.createElement("li");
+    li.textContent = `${i + 1}º ${aluno.nome} - ${aluno.pontos} pts`;
+    li.onclick = () => mostrarHistorico(aluno.nome);
+    container.appendChild(li);
+  });
+}
+
+// Mostrar histórico de um aluno
+function mostrarHistorico(nome) {
+  const container = document.getElementById("detalhesHistorico");
+  const historico = historicoAlunos[nome];
+  container.innerHTML = `<h3>${nome}</h3>`;
+  if (historico.length === 0) {
+    container.innerHTML += "<p>Sem apontamentos ainda.</p>";
+  } else {
+    container.innerHTML += "<ul>" +
+      historico.map(item => `<li>${item}</li>`).join("") +
+      "</ul>";
+  }
+  document.getElementById("historico").scrollIntoView({ behavior: "smooth" });
+}
+
+// Inicialização
+function carregarSite() {
+  renderizarCategoria("albert", categorias.albert);
+  renderizarCategoria("steve", categorias.steve);
+  renderizarCategoria("comportados", categorias.comportados);
+  renderizarCategoria("dedicados", categorias.dedicados);
+}
+
+window.onload = carregarSite;
