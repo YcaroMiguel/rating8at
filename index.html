@@ -1,46 +1,60 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Estrelas do Bimestre - Rating</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Estrelas do Bimestre - Rating</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <h1>Estrelas do Bimestre - Rating</h1>
-  </header>
 
-  <nav>
-    <button onclick="mostrarCategoria('einstein')">Albert Einstein</button>
-    <button onclick="mostrarCategoria('jobs')">Steve Jobs</button>
-    <button onclick="mostrarCategoria('quietos')">Comportados</button>
-    <button onclick="mostrarCategoria('dedicados')">No Pain, No Gain</button>
-  </nav>
+    <header>
+        <h1>Estrelas do Bimestre</h1>
+        <p>Rating baseado em desempenho, dedicação e comportamento</p>
+    </header>
 
-  <section id="categorias">
-    <div id="einstein" class="categoria ativo">
-      <h2>Prêmio Albert Einstein (Melhores Notas)</h2>
-      <div class="lista-alunos" id="lista-einstein"></div>
-    </div>
-    <div id="jobs" class="categoria">
-      <h2>Prêmio Steve Jobs (Criatividade)</h2>
-      <div class="lista-alunos" id="lista-jobs"></div>
-    </div>
-    <div id="quietos" class="categoria">
-      <h2>Comportados (Alunos Mais Quietos)</h2>
-      <div class="lista-alunos" id="lista-quietos"></div>
-    </div>
-    <div id="dedicados" class="categoria">
-      <h2>No Pain, No Gain (Dedicação e Melhora)</h2>
-      <div class="lista-alunos" id="lista-dedicados"></div>
-    </div>
-  </section>
+    <nav>
+        <button id="prêmio-einstein">Prêmio Albert Einstein</button>
+        <button id="prêmio-jobs">Prêmio Steve Jobs</button>
+        <button id="comportados">Comportados</button>
+        <button id="no-pain">No Pain, No Gain</button>
+    </nav>
 
-  <footer>
-    <p>Estrelas do Bimestre &copy; 2025</p>
-  </footer>
+    <div class="stars"></div>
 
-  <script src="script.js"></script>
+    <div class="categoria" id="categoria-einstein">
+        <h2>Prêmio Albert Einstein - Melhores Notas</h2>
+        <div class="lista-alunos">
+            <!-- Lista de alunos (prêmios) -->
+        </div>
+    </div>
+
+    <div class="categoria" id="categoria-jobs">
+        <h2>Prêmio Steve Jobs - Aluno Mais Criativo</h2>
+        <div class="lista-alunos">
+            <!-- Lista de alunos (criatividade) -->
+        </div>
+    </div>
+
+    <div class="categoria" id="categoria-comportados">
+        <h2>Comportados - Aluno Mais Quieto</h2>
+        <div class="lista-alunos">
+            <!-- Lista de alunos (comportamento) -->
+        </div>
+    </div>
+
+    <div class="categoria" id="categoria-no-pain">
+        <h2>Prêmio "No Pain, No Gain" - Aluno Mais Dedicado</h2>
+        <div class="lista-alunos">
+            <!-- Lista de alunos (dedicação) -->
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Estrelas do Bimestre - Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
