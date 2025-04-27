@@ -1,59 +1,175 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Estrelas do Bimestre - Rating</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estrelas do Bimestre</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS - Estilos Preloader e Página */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Preloader */
+        #preloader {
+            background-color: #0f0f0f;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .loader {
+            text-align: center;
+            color: #fff;
+        }
+
+        .formas {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .circulo, .triangulo, .quadrado {
+            width: 30px;
+            height: 30px;
+            background-color: #e60073; /* Rosa escuro (estilo Round 6) */
+            animation: bounce 1.5s infinite ease-in-out;
+        }
+
+        .circulo {
+            border-radius: 50%;
+        }
+
+        .triangulo {
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-bottom: 30px solid #e60073;
+            background: none;
+        }
+
+        .quadrado {
+            border-radius: 5px;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        #loader-message {
+            font-size: 18px;
+            color: #fff;
+            animation: fadeIn 2s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Esconde o preloader depois de 3s */
+        body.loaded #preloader {
+            display: none;
+        }
+
+        /* Corpo da Página */
+        .content {
+            text-align: center;
+            padding: 50px;
+            background-color: #f3f4f6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .button {
+            background-color: #e60073;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #c2005b;
+        }
+    </style>
 </head>
 <body>
 
-<!-- Preloader -->
-<div id="preloader">
-  <div class="loader">
-    <div class="shape circle"></div>
-    <div class="shape triangle"></div>
-    <div class="shape square"></div>
-  </div>
-</div>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader">
+            <div class="formas">
+                <div class="circulo"></div>
+                <div class="triangulo"></div>
+                <div class="quadrado"></div>
+            </div>
+            <p id="loader-message">Carregando...</p>
+        </div>
+    </div>
 
-<!-- Background -->
-<div class="background-shapes">
-  <div class="circle-shape"></div>
-  <div class="triangle-shape"></div>
-  <div class="square-shape"></div>
-</div>
+    <!-- Conteúdo da Página -->
+    <div class="content">
+        <h1>Bem-vindo ao Estrelas do Bimestre</h1>
+        <p>A competição está prestes a começar. Fique atento aos desafios!</p>
+        <button class="button" onclick="startGame()">Começar o Jogo</button>
+    </div>
 
-<header>
-  <h1>Estrelas do Bimestre - Rating</h1>
-  <p>Inspirado em Round 6</p>
-</header>
+    <script>
+        // Lista de frases para o carregamento
+        const frases = [
+            "Carregando...",
+            "Preparando desafios...",
+            "Quase lá...",
+            "Aquecendo a competição...",
+            "A sorte favorece os corajosos...",
+            "Pegando as formas geométricas...",
+            "Chamando os competidores...",
+            "O jogo está quase começando...",
+            "Desenhando seu destino...",
+            "No jogo, cada segundo conta...",
+            "Montando a próxima fase...",
+            "Respire fundo... vai começar!",
+            "Quem ousa vence!",
+            "Aguardando os jogadores...",
+            "Pronto para o próximo desafio?"
+        ];
 
-<main>
-  <!-- Categorias -->
-  
-  <section class="categoria">
-    <h2>Prêmio Albert Einstein (Melhores Notas)</h2>
-    <ul class="lista-alunos" id="categoria-notas"></ul>
-  </section>
+        // Escolhe uma frase aleatória
+        const loaderMessage = document.getElementById('loader-message');
+        const fraseAleatoria = frases[Math.floor(Math.random() * frases.length)];
+        loaderMessage.textContent = fraseAleatoria;
 
-  <section class="categoria">
-    <h2>Prêmio "Tá em tudo"</h2>
-    <ul class="lista-alunos" id="categoria-participacao"></ul>
-  </section>
+        // Depois de 3 segundos, some o preloader
+        setTimeout(() => {
+            document.body.classList.add('loaded');
+        }, 3000);
 
-  <section class="categoria">
-    <h2>Prêmio Comportados</h2>
-    <ul class="lista-alunos" id="categoria-comportados"></ul>
-  </section>
+        // Função para iniciar o jogo
+        function startGame() {
+            alert("O jogo começou!");
+        }
+    </script>
 
-  <section class="categoria">
-    <h2>Prêmio Steve Jobs</h2>
-    <ul class="lista-alunos" id="categoria-criativo"></ul>
-  </section>
-
-</main>
-
-<script src="script.js"></script>
 </body>
 </html>
