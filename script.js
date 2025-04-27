@@ -1,11 +1,13 @@
-// Preloader
+// Preloader com tempo fixo de 3 segundos
 window.addEventListener('load', () => {
-  document.body.classList.add('loaded');
+  setTimeout(() => {
+    document.body.classList.add('loaded');
+  }, 3000); // 3000 milissegundos = 3 segundos
 });
 
 // Dados dos alunos
 const alunos = [
-  "Aimê Laís", "Elias", "Thais", "Gustavo", "Ana Sophia", "Cesar",
+  "Elias", "Thais", "Gustavo", "Ana Sophia", "Cesar",
   "Isabelle", "Mateus", "Sury", "André"
 ];
 
