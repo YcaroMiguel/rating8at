@@ -5,7 +5,7 @@ window.addEventListener('load', () => {
 
 // Dados dos alunos
 const alunos = [
-  "Elias", "Thais", "Gustavo", "Ana Sophia", "Cesar",
+  "Aimê Laís", "Elias", "Thais", "Gustavo", "Ana Sophia", "Cesar",
   "Isabelle", "Mateus", "Sury", "André"
 ];
 
