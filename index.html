@@ -1,50 +1,96 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Rating - Estrelas do Bimestre</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estrelas do Bimestre - Rating</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <h1>Estrelas do Bimestre</h1>
-    <p>Rating oficial dos alunos</p>
-  </header>
 
-  <main>
-    <section class="categorias">
-      <div class="categoria" id="albert">
-        <h2>Prêmio Albert Einstein</h2>
-        <ul class="lista-alunos"></ul>
-      </div>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader">
+            <div class="shape circle"></div>
+            <div class="shape triangle"></div>
+            <div class="shape square"></div>
+        </div>
+    </div>
 
-      <div class="categoria" id="steve">
-        <h2>Prêmio Steve Jobs</h2>
-        <ul class="lista-alunos"></ul>
-      </div>
+    <!-- Formas geométricas de fundo -->
+    <div class="background-shapes">
+        <div class="circle-shape"></div>
+        <div class="triangle-shape"></div>
+        <div class="square-shape"></div>
+    </div>
 
-      <div class="categoria" id="comportados">
-        <h2>Comportados</h2>
-        <ul class="lista-alunos"></ul>
-      </div>
+    <header>
+        <h1>Estrelas do Bimestre - Rating</h1>
+        <p>Inspirado em Round 6</p>
+    </header>
 
-      <div class="categoria" id="dedicados">
-        <h2>Prêmio No Pain, No Gain</h2>
-        <ul class="lista-alunos"></ul>
-      </div>
-    </section>
+    <main>
+        <section class="categoria">
+            <h2>Prêmio Albert Einstein - Melhores Notas</h2>
+            <ul class="lista-alunos">
+                <!-- Lista de Alunos -->
+                <li onclick="toggleHistorico(this, 'Elias')">1º - Elias (0 pts)</li>
+                <div class="historico hidden" id="historico-Elias">
+                    <h3>Histórico do Elias</h3>
+                    <ul><li>Nenhum apontamento ainda.</li></ul>
+                </div>
 
-    <section class="historico" id="historico">
-      <h2>Histórico de Apontamentos</h2>
-      <div id="detalhesHistorico">Clique em um aluno para ver o histórico.</div>
-    </section>
-  </main>
+                <li onclick="toggleHistorico(this, 'Thais')">2º - Thais (0 pts)</li>
+                <div class="historico hidden" id="historico-Thais">
+                    <h3>Histórico da Thais</h3>
+                    <ul><li>Nenhum apontamento ainda.</li></ul>
+                </div>
 
-  <footer>
-    <p>Inspirado por Round 6 | Projeto escolar © 2025</p>
-  </footer>
+                <li onclick="toggleHistorico(this, 'Gustavo')">3º - Gustavo (0 pts)</li>
+                <div class="historico hidden" id="historico-Gustavo">
+                    <h3>Histórico do Gustavo</h3>
+                    <ul><li>Nenhum apontamento ainda.</li></ul>
+                </div>
 
-  <script src="script.js"></script>
+                <li onclick="toggleHistorico(this, 'AnaSophia')">4º - Ana Sophia (0 pts)</li>
+                <div class="historico hidden" id="historico-AnaSophia">
+                    <h3>Histórico da Ana Sophia</h3>
+                    <ul><li>Nenhum apontamento ainda.</li></ul>
+                </div>
+
+                <li onclick="toggleHistorico(this, 'Cesar')">5º - Cesar (0 pts)</li>
+                <div class="historico hidden" id="historico-Cesar">
+                    <h3>Histórico do Cesar</h3>
+                    <ul><li>Nenhum apontamento ainda.</li></ul>
+                </div>
+
+                <li onclick="toggleHistorico(this, 'Isabelle')">6º - Isabelle (0 pts)</li>
+                <div class="historico hidden" id="historico-Isabelle">
+                    <h3>Histórico da Isabelle</h3>
+                    <ul><li>Nenhum apontamento ainda.</li></ul>
+                </div>
+
+                <li onclick="toggleHistorico(this, 'Mateus')">7º - Mateus (0 pts)</li>
+                <div class="historico hidden" id="historico-Mateus">
+                    <h3>Histórico do Mateus</h3>
+                    <ul><li>Nenhum apontamento ainda.</li></ul>
+                </div>
+
+                <li onclick="toggleHistorico(this, 'Sury')">8º - Sury (0 pts)</li>
+                <div class="historico hidden" id="historico-Sury">
+                    <h3>Histórico da Sury</h3>
+                    <ul><li>Nenhum apontamento ainda.</li></ul>
+                </div>
+
+                <li onclick="toggleHistorico(this, 'André')">9º - André (0 pts)</li>
+                <div class="historico hidden" id="historico-André">
+                    <h3>Histórico do André</h3>
+                    <ul><li>Nenhum apontamento ainda.</li></ul>
+                </div>
+            </ul>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
 </body>
 </html>
