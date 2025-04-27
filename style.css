@@ -1,114 +1,182 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-  margin: 0;
-  font-family: 'Arial', sans-serif;
-  background-color: #0d0d0d;
-  color: #f2f2f2;
-  min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    background: #0d0d0d;
+    color: #fff;
+    overflow-x: hidden;
+    position: relative;
 }
 
 header {
-  text-align: center;
-  padding: 2rem;
-  background-color: #e60073; /* pink forte - uniforme dos guardas */
-  color: white;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.6);
+    text-align: center;
+    padding: 20px;
+    background: linear-gradient(90deg, #e60073, #ff6699);
 }
 
 header h1 {
-  font-size: 2.8rem;
-  letter-spacing: 2px;
-  text-shadow: 2px 2px 0 #000;
+    font-size: 2.5rem;
 }
 
 header p {
-  font-size: 1.1rem;
-  opacity: 0.85;
+    margin-top: 10px;
+    font-size: 1.2rem;
+    color: #ffd1dc;
 }
 
-.categorias {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem;
-  padding: 2rem;
+main {
+    padding: 20px;
 }
 
 .categoria {
-  background-color: #1a1a1a;
-  border: 2px solid #e60073;
-  border-radius: 10px;
-  padding: 1rem;
-  width: 320px;
-  max-width: 90%;
-  box-shadow: 0 0 15px rgba(230, 0, 115, 0.3);
-  transition: transform 0.2s;
-}
-
-.categoria:hover {
-  transform: scale(1.03);
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
 }
 
 .categoria h2 {
-  text-align: center;
-  border-bottom: 1px solid #e60073;
-  padding-bottom: 0.5rem;
-  margin-bottom: 0.5rem;
-  font-size: 1.3rem;
-  color: #e60073;
+    margin-bottom: 15px;
+    color: #ff6699;
 }
 
 .lista-alunos {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+    list-style: none;
 }
 
 .lista-alunos li {
-  cursor: pointer;
-  padding: 0.6rem;
-  border-bottom: 1px dashed #555;
-  transition: background 0.3s;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.08);
+    margin-bottom: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
 }
 
 .lista-alunos li:hover {
-  background-color: #333;
+    background: rgba(255, 255, 255, 0.15);
 }
 
 .historico {
-  padding: 2rem;
-  background-color: #111;
-  border-top: 3px solid #e60073;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    margin: 10px 0;
+    border-left: 3px solid #e60073;
 }
 
-#detalhesHistorico h3 {
-  color: #1ed760; /* Verde tipo uniforme dos jogadores */
-  font-size: 1.5rem;
+.hidden {
+    display: none;
 }
 
-#detalhesHistorico ul {
-  list-style: disc;
-  padding-left: 20px;
-}
-
-#detalhesHistorico li {
-  margin-bottom: 0.5rem;
-}
-
-footer {
-  text-align: center;
-  padding: 1rem;
-  background-color: #e60073;
-  color: white;
-  font-size: 0.9rem;
-}
-
-@media screen and (max-width: 768px) {
-  .categorias {
-    flex-direction: column;
+/* Preloader */
+#preloader {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #0d0d0d;
+    display: flex;
     align-items: center;
-  }
+    justify-content: center;
+    z-index: 10000;
+}
 
-  header h1 {
-    font-size: 2rem;
-  }
+.loader {
+    display: flex;
+    gap: 20px;
+    animation: spin 2s linear infinite;
+}
+
+.shape {
+    width: 30px;
+    height: 30px;
+    background-color: #e60073;
+}
+
+.circle {
+    border-radius: 50%;
+}
+
+.triangle {
+    width: 0;
+    height: 0;
+    border-left: 17px solid transparent;
+    border-right: 17px solid transparent;
+    border-bottom: 30px solid #e60073;
+    background: none;
+}
+
+.square {
+    background-color: #e60073;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+body.loaded #preloader {
+    display: none;
+}
+
+/* Background shapes */
+.background-shapes {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.background-shapes div {
+    position: absolute;
+    opacity: 0.2;
+    animation: float 10s infinite alternate;
+}
+
+.circle-shape {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: pink;
+    top: 10%;
+    left: 20%;
+}
+
+.triangle-shape {
+    width: 0;
+    height: 0;
+    border-left: 60px solid transparent;
+    border-right: 60px solid transparent;
+    border-bottom: 100px solid pink;
+    top: 50%;
+    left: 70%;
+}
+
+.square-shape {
+    width: 80px;
+    height: 80px;
+    background: pink;
+    top: 80%;
+    left: 30%;
+}
+
+@keyframes float {
+    from { transform: translateY(0); }
+    to { transform: translateY(-20px); }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.8rem;
+    }
+    .categoria h2 {
+        font-size: 1.5rem;
+    }
 }
