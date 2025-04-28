@@ -3,57 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Estrelas do Bimestre - Rating</title>
+    <title>Rating - Estrelas do Bimestre</title>
     <link rel="stylesheet" href="rating.css">
-    <script defer src="rating.js"></script>
 </head>
 <body>
-    <div class="background">
-        <!-- Formas geométricas animadas aqui -->
-    </div>
-
-    <div class="container">
-        <h1>Estrelas do Bimestre - Rating</h1>
-
-        <div class="ratings">
-            <!-- Lista de alunos -->
-            <div class="student" data-student="Aimê Laís">1° - Aimê Laís - 0 pontos</div>
-            <div class="student" data-student="Alanna Gabrielly">2° - Alanna Gabrielly - 0 pontos</div>
-            <div class="student" data-student="Alice Feitosa">3° - Alice Feitosa - 0 pontos</div>
-            <div class="student" data-student="Ana Clara">4° - Ana Clara - 0 pontos</div>
-            <div class="student" data-student="Ana Sophia">5° - Ana Sophia - 0 pontos</div>
-            <div class="student" data-student="André Lucas">6° - André Lucas - 0 pontos</div>
-            <div class="student" data-student="Ashira Giovanna">7° - Ashira Giovanna - 0 pontos</div>
-            <div class="student" data-student="Bruna Vitória">8° - Bruna Vitória - 0 pontos</div>
-            <div class="student" data-student="Cesar Miguel">9° - Cesar Miguel - 0 pontos</div>
-            <div class="student" data-student="Elias Maia">10° - Elias Maia - 0 pontos</div>
-            <div class="student" data-student="Emanuelly Ester">11° - Emanuelly Ester - 0 pontos</div>
-            <div class="student" data-student="Felipe de Melo">12° - Felipe de Melo - 0 pontos</div>
-            <div class="student" data-student="Gabriel Pinheiro">13° - Gabriel Pinheiro - 0 pontos</div>
-            <div class="student" data-student="Gustavo Luiz">14° - Gustavo Luiz - 0 pontos</div>
-            <div class="student" data-student="Hiel Alves">15° - Hiel Alves - 0 pontos</div>
-            <div class="student" data-student="Isabelly Lins">16° - Isabelly Lins - 0 pontos</div>
-            <div class="student" data-student="João Lucas">17° - João Lucas - 0 pontos</div>
-            <div class="student" data-student="Júlio Cezar">18° - Júlio Cezar - 0 pontos</div>
-            <div class="student" data-student="Kaira Vitória">19° - Kaira Vitória - 0 pontos</div>
-            <div class="student" data-student="Luiz Gabriel">20° - Luiz Gabriel - 0 pontos</div>
-            <div class="student" data-student="Lyvia Emanuelly">21° - Lyvia Emanuelly - 0 pontos</div>
-            <div class="student" data-student="Maria Alice">22° - Maria Alice - 0 pontos</div>
-            <div class="student" data-student="Maria Eduarda">23° - Maria Eduarda - 0 pontos</div>
-            <div class="student" data-student="Marya Luiza">24° - Marya Luiza - 0 pontos</div>
-            <div class="student" data-student="Matheus Vitor">25° - Matheus Vitor - 0 pontos</div>
-            <div class="student" data-student="Pedro Henrique">26° - Pedro Henrique - 0 pontos</div>
-            <div class="student" data-student="Rebecca Silva">27° - Rebecca Silva - 0 pontos</div>
-            <div class="student" data-student="Samuel Asafe">28° - Samuel Asafe - 0 pontos</div>
-            <div class="student" data-student="Sury de França">29° - Sury de França - 0 pontos</div>
-            <div class="student" data-student="Thais Lopez">30° - Thais Lopez - 0 pontos</div>
-            <div class="student" data-student="Ycaro Miguel">31° - Ycaro Miguel - 0 pontos</div>
+    <div class="preloader">
+        <div class="preloader-content">
+            <div class="shapes">
+                <div class="circle"></div>
+                <div class="triangle"></div>
+                <div class="square"></div>
+            </div>
+            <h2 class="preloader-text">Carregando...</h2>
         </div>
-
-        <!-- Aqui serão adicionados os históricos ao clicar -->
-        <div id="student-history" class="student-history"></div>
-
     </div>
 
+    <main style="display:none;">
+        <header>
+            <h1>Ranking Estrelas do Bimestre</h1>
+            <p id="player-count"></p>
+        </header>
+
+        <section class="categories">
+            <h2>Categorias</h2>
+            <ul>
+                <li>1. Comportamento</li>
+                <li>2. Participação nas Aulas</li>
+                <li>3. Projetos e Trabalhos</li>
+                <li>4. Provas e Avaliações</li>
+                <li>5. Desempenho em Grupo</li>
+            </ul>
+        </section>
+
+        <section class="ratings"></section>
+
+        <section id="student-history" style="display: none;"></section>
+    </main>
+
+    <script src="rating.js"></script>
 </body>
 </html>
