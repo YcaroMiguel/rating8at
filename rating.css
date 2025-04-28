@@ -1,127 +1,136 @@
-/* Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* Fundo com cores Round 6 */
 body {
+    margin: 0;
     font-family: 'Poppins', sans-serif;
-    background-color: #0f0f0f;
-    color: #f9f9f9;
+    background: linear-gradient(to bottom, #000, #111);
+    color: #fff;
     overflow-x: hidden;
-    position: relative;
 }
 
-/* Fundo animado com formas geométricas */
-.background {
+header {
+    text-align: center;
+    padding: 20px;
+}
+
+.categories {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.categories ul {
+    list-style: none;
+    padding: 0;
+}
+
+.categories li {
+    margin: 10px 0;
+    font-size: 18px;
+}
+
+.ratings {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.student {
+    background: rgba(255, 255, 255, 0.1);
+    margin: 10px;
+    padding: 15px 30px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    font-size: 18px;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.student:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+#student-history {
+    padding: 20px;
+    background: rgba(255,255,255,0.05);
+    margin: 20px;
+    border-radius: 10px;
+}
+
+/* Preloader */
+.preloader {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 0;
-    overflow: hidden;
+    background: #111;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    flex-direction: column;
 }
 
-.background::before, .background::after {
-    content: '';
-    position: absolute;
-    background: rgba(255, 0, 128, 0.1);
-    border-radius: 50%;
-    width: 300px;
-    height: 300px;
-    animation: float 15s infinite;
-}
-
-.background::after {
-    background: rgba(255, 255, 255, 0.05);
-    width: 200px;
-    height: 200px;
-    left: 50%;
-    top: 70%;
-    animation: float2 18s infinite;
-}
-
-@keyframes float {
-    0% { transform: translateY(0) translateX(0); }
-    50% { transform: translateY(-50px) translateX(50px); }
-    100% { transform: translateY(0) translateX(0); }
-}
-
-@keyframes float2 {
-    0% { transform: translateY(0) translateX(0); }
-    50% { transform: translateY(50px) translateX(-50px); }
-    100% { transform: translateY(0) translateX(0); }
-}
-
-/* Container principal */
-.container {
-    position: relative;
-    z-index: 1;
-    padding: 2rem;
-    max-width: 900px;
-    margin: 0 auto;
+.preloader-content {
     text-align: center;
 }
 
-/* Título */
-.container h1 {
-    font-size: 2.5rem;
-    color: #ff0077;
-    margin-bottom: 2rem;
-}
-
-/* Lista de ratings */
-.ratings {
+.shapes {
     display: flex;
-    flex-direction: column;
-    gap: 1rem;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
 }
 
-/* Cada aluno */
-.student {
-    background: #1a1a1a;
-    border: 2px solid #ff0077;
-    padding: 1rem;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background 0.3s, transform 0.3s;
+.circle, .triangle, .square {
+    width: 30px;
+    height: 30px;
+    background: #ff007f;
+    animation: float 1.5s infinite alternate;
 }
 
-.student:hover {
-    background: #ff0077;
-    color: #0f0f0f;
-    transform: translateY(-3px);
+.triangle {
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    background: #00c3ff;
 }
 
-/* Histórico do aluno */
-.student-history {
-    margin-top: 2rem;
-    text-align: left;
-    background: #222;
-    padding: 1rem;
-    border-radius: 8px;
-    display: none;
-    animation: appear 0.5s forwards;
+.square {
+    background: #ffdf00;
 }
 
-@keyframes appear {
-    from { opacity: 0; transform: scale(0.9); }
-    to { opacity: 1; transform: scale(1); }
+@keyframes float {
+    from { transform: translateY(0); }
+    to { transform: translateY(-20px); }
 }
 
-/* Responsividade */
-@media (max-width: 600px) {
-    .container {
-        padding: 1rem;
-    }
-    .container h1 {
-        font-size: 2rem;
-    }
-    .student {
-        font-size: 0.9rem;
-        padding: 0.8rem;
-    }
+.preloader-text {
+    font-size: 20px;
+    color: #fff;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* Animações de subir e descer */
+@keyframes subir {
+    0% { background-color: #222; }
+    50% { background-color: gold; }
+    100% { background-color: #222; }
+}
+
+@keyframes descer {
+    0% { opacity: 1; }
+    50% { opacity: 0.3; }
+    100% { opacity: 1; }
+}
+
+.student.up {
+    animation: subir 2s ease;
+}
+
+.student.down {
+    animation: descer 2s ease;
 }
