@@ -1,43 +1,33 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rating - Estrelas do Bimestre</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ranking - Estrelas do Bimestre</title>
     <link rel="stylesheet" href="rating.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
+
+    <!-- Preloader -->
     <div class="preloader">
         <div class="preloader-content">
-            <div class="shapes">
-                <div class="circle"></div>
-                <div class="triangle"></div>
-                <div class="square"></div>
-            </div>
-            <h2 class="preloader-text">Carregando...</h2>
+            <div class="loader"></div>
+            <p class="preloader-text">Carregando...</p>
         </div>
     </div>
 
-    <main style="display:none;">
+    <!-- Main Content -->
+    <main class="main-content">
         <header>
-            <h1>Ranking Estrelas do Bimestre</h1>
+            <h1>Ranking - Estrelas do Bimestre</h1>
             <p id="player-count"></p>
         </header>
 
-        <section class="categories">
-            <h2>Categorias</h2>
-            <ul>
-                <li>1. Comportamento</li>
-                <li>2. Participação nas Aulas</li>
-                <li>3. Projetos e Trabalhos</li>
-                <li>4. Provas e Avaliações</li>
-                <li>5. Desempenho em Grupo</li>
-            </ul>
+        <section class="ranking-container">
+            <div class="ratings"></div>
         </section>
-
-        <section class="ratings"></section>
-
-        <section id="student-history" style="display: none;"></section>
     </main>
 
     <script src="rating.js"></script>
